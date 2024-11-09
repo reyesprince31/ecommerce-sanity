@@ -11,11 +11,13 @@ import {
 import Link from "next/link";
 import Form from "next/form";
 import { PackageIcon, TrolleyIcon } from "@sanity/icons";
-
+// import { useBasketStore } from "@/app/(store)/store";
 const Header = () => {
   const { user } = useUser();
+  // const itemCount = useBasketStore((state) =>
+  //   state.items.reduce((acc, item) => acc + item.quantity, 0)
+  // );
 
-  const createClerkPasskey = async () => {};
   return (
     <header className="flex flex-wrap justify-between items-center px-4 py-2">
       {/**Top */}
@@ -68,13 +70,6 @@ const Header = () => {
             <SignedOut>
               <SignInButton mode="modal" />
             </SignedOut>
-            {user?.passkeys.length === 0 && (
-              <button
-                onClick={createClerkPasskey}
-                className="bg-white hover:bg-blue-700 hover:text-white animate-pulse text-blue-500 font-bold py-2 px-4 roundd border-blue-300 border">
-                Create passkey
-              </button>
-            )}
           </ClerkLoaded>
         </div>
       </div>

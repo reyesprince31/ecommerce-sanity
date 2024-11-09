@@ -25,7 +25,7 @@ const Header = () => {
         <Link
           href="/"
           className="text-2xl text-blue-500 hover:opacity-50 font-bold cursor-pointer mx-auto sm:mx-0">
-          Shopr
+          ATVS
         </Link>
         <Form
           action="/search"

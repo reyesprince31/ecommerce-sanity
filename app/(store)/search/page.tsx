@@ -4,9 +4,9 @@ import { searchProductsByName } from "@/sanity/lib/products/productQueries";
 const SearchPage = async ({
   searchParams,
 }: {
-  searchParams: { query: string };
+  searchParams: Promise<{ query: string }>;
 }) => {
-  const { query } = searchParams;
+  const { query } = await searchParams;
   const products = await searchProductsByName(query);
 
   if (!products) {

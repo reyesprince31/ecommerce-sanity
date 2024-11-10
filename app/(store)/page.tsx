@@ -1,5 +1,5 @@
 import ProductsView from "@/components/product/ProductsView";
-import { getAllProducts } from "@/sanity/lib/products/getAllProducts";
+import { getAllProducts } from "@/sanity/lib/products/productQueries";
 
 export default async function Home() {
   const products = await getAllProducts();

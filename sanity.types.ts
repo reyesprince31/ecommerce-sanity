@@ -548,6 +548,24 @@ export type PRODUCT_SEARCH_QUERYResult = Array<{
   stock?: number;
 }>;
 
+// Source: ./sanity/lib/sales/getActiveSaleByCouponCode.ts
+// Variable: ACTIVE_SALE_BY_COUPON_QUERY
+// Query: *[            _type=="sale"             && isActive == true             && couponCode == $couponCode] | order(validFrom desc)[0]
+export type ACTIVE_SALE_BY_COUPON_QUERYResult = {
+  _id: string;
+  _type: "sale";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  discountAmount?: number;
+  couponCode?: string;
+  validFrom?: string;
+  validUntil?: string;
+  isActive?: boolean;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -555,5 +573,6 @@ declare module "@sanity/client" {
     "\n        *[_type==\"category\"] | order(name asc)": GET_ALL_CATEGORIESResult;
     "\n    *[_type=='product'] | order(name asc) ": ALL_PRODUCTS_QUERYResult;
     "\n          *[_type=='product' && name match $searchParam]|order(name asc)": PRODUCT_SEARCH_QUERYResult;
+    "\n        *[\n            _type==\"sale\" \n            && isActive == true \n            && couponCode == $couponCode] | order(validFrom desc)[0]": ACTIVE_SALE_BY_COUPON_QUERYResult;
   }
 }

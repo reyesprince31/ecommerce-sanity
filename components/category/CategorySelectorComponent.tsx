@@ -1,4 +1,5 @@
 "use client";
+
 import {ChevronsDownUpIcon, Check } from "lucide-react";
 import { Category } from "@/sanity.types";
 import { useRouter } from "next/navigation";
@@ -14,11 +15,10 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
-const CategorySelectorComponent = ({
-  categories,
-}: {
+
+function CategorySelectorComponent ({ categories }: {
   categories: Category[];
-}) => {
+}) {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("")
     const router = useRouter()
@@ -85,4 +85,5 @@ const CategorySelectorComponent = ({
     </Popover>
   );
 };
+
 export default CategorySelectorComponent;

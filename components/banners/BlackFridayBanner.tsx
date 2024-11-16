@@ -1,11 +1,15 @@
-import { getActiveSaleByCouponCode } from "@/sanity/lib/sales/getActiveSaleByCouponCode";
+import { Sale } from "@/sanity.types";
+import { COUPON_CODES } from "@/sanity/lib/sales/couponCode";
+import { getActiveSaleByCouponCode } from "@/sanity/lib/sales/salesQueries";
 
 async function BlackFridayBanner() {
-    const sale = await getActiveSaleByCouponCode('BFRIDAY');
- 
-    if (!sale?.isActive) {
-      return null;
-    }
+  const sale = (await getActiveSaleByCouponCode(
+    COUPON_CODES.BFRIDAY as "BFRIDAY"
+  )) as Sale;
+
+  if (!sale?.isActive) {
+    return null;
+  }
 
   return (
     <div className="bg-gradient-to-r from-red-600 to-black text-white px-6 py-10 mx-4 mt-2 rounded-lg shadow-lg">
@@ -32,6 +36,6 @@ async function BlackFridayBanner() {
       </div>
     </div>
   );
-};
+}
 
 export default BlackFridayBanner;
